@@ -34,7 +34,7 @@ CFLAGS += -g3 -O0 -DDEBUG -DYYDEBUG=1
 $(OBJS_ROOT)/%.o: $(CURRENT_DIR)/%.c
 	$(at)$(CC) $(CFLAGS) $(SYSTEM_INC) $(INCLUDES) $(DEFINES) -MMD -MF $(basename $@).d -MP -o $@ -c $<
 
-
+.PHONY: all
 all:  $(OBJS_ROOT) $(MAKE_TARGET) 
 
 $(OBJS_ROOT) :
@@ -47,7 +47,8 @@ $(MAKE_TARGET): $(OBJECTS_C)
           $(OBJECTS_C) \
           -o $@
 
-.PHONY: clean
+.PHONY: clean fresh
+fresh: clean all
 clean:
 	$(at) -rm -rf $(OBJS_ROOT) $(CURRENT_DIR)/$(MAKE_TARGET)
 
