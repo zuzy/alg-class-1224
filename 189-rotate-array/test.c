@@ -4,6 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "test.h"
+#include "def.h"
+#include "func.h"
 
 #define CASE 2
 
@@ -83,10 +86,7 @@ int main(int argc, char *argv[])
 
         int i = 0;
         printf("testing[%d]", index);
-        for(; i < size; i++) {
-            printf("\t%d", target[i]);
-        }
-        printf("\n");
+        dump(target,size);
         free(target);
     }
     return 0;
