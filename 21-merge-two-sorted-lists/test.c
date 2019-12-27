@@ -16,27 +16,27 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
     tmp = &dummy;
 
     while(l1 || l2) {
-        tmp->next = (struct ListNode*)malloc(sizeof(struct ListNode));
-        tmp = tmp->next;
-        tmp->next = NULL;
         if(l1 && l2) {
             if(l1->val < l2->val) {
-                tmp->val = l1->val;
+                tmp->next = l1;
                 l1 = l1->next;
             } else {
-                tmp->val = l2->val;
+                tmp->next = l2;
                 l2 = l2->next;
             }
-        } else if(l1) {
-            tmp->val = l1->val;
-            l1 = l1->next;
-        } else {
-            tmp->val = l2->val;
-            l2 = l2->next;
+        } else{
+            if(l1) {
+                tmp->next = l1;
+            } else {
+                tmp->next = l2;
+            }
+            break;
         }
+        tmp = tmp->next;
     }
     return dummy.next;
 }
+
 
 static void _create_random_list(struct ListNode *dummy, unsigned int size)
 {
