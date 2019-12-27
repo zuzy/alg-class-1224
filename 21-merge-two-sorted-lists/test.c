@@ -90,8 +90,5 @@ int main(int argc, char *argv[])
         free(tmp);
     }
     printf("\n");
-
-    _clean_list(dummy1.next);
-    _clean_list(dummy2.next);
     return 0;
 }
